@@ -1,12 +1,19 @@
+body {
+    background: linear-gradient(to right, #ffefba, #ffffff);
+}
+
 h1 {
+    font-family: 'Grandstander', cursive;
     font-size: 40px;
     text-align: center;
     padding-top: 30px;
 }
 
 #buttonDiv {
-    width: 150px;
+    font-family: 'Grandstander', cursive;
+    width: 170px;
     margin: auto;
+
 }
 
 /*turn this into a grid - not flex box */
@@ -18,7 +25,7 @@ h1 {
     height: 800px;
     width: 800px;
     margin: 20px auto;
-    background-color: pink;
+    background-color: white;
 }
 
 .row {
@@ -29,15 +36,12 @@ h1 {
 }
 
 .square {
-    width: 25%;
-    height: 100%;
     border: black 1px solid;
 }
 
 .squareAltered {
     width: 25%;
-    height: 100%;
-    border: black 1px solid;
-    background-color: yellow;
+    height: 100;
+    background-color: rgb(150, 236, 133);
 }
 
