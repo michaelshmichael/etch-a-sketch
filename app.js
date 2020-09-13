@@ -19,10 +19,10 @@ function genGrid(gridAmount) {
        row.style.height = `${800/gridAmount}px`
        gridContainer.appendChild(row);
         for (j = 0; j < gridAmount; j++) {
-            const gridSquare = document.createElement('div');
-            gridSquare.classList.add('square');
-            gridSquare.style.width = `${800/gridAmount}px`
-            row.appendChild(gridSquare);
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.style.width = `${800/gridAmount}px`
+            row.appendChild(square);
         } 
     }
     // giving coloring functionality
