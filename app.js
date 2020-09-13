@@ -33,6 +33,7 @@ function genGrid(gridAmount) {
     })
 })
 }
+
 genGrid(gridAmount);
 
 
