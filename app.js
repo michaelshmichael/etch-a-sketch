@@ -2,6 +2,7 @@ const gridContainer = document.querySelector('#gridContainer');
 const gridAmount = 45;
 const input = document.querySelector('button')
 
+// creates the grid
 function genGrid(gridAmount) {
     for (i = 0; i < gridAmount; i++) {
        const row = document.createElement('div');
@@ -16,27 +17,35 @@ function genGrid(gridAmount) {
         } 
     }
 }
-
 genGrid(gridAmount);
 
-//Mouseover drawing effect
-const squares = Array.from(document.getElementsByClassName('square'))
+
+// reset and resize the grid when click button
+input.addEventListener('click', function(){
+    const gridAmount = prompt("How many sqaures do you want?");
+    // deleting all squares and rows (innerHTML is a bit hacky) 
+    const row = Array.from(document.getElementsByClassName('row'));
+    row.forEach(function(row){
+        row.innerHTML = '';
+    })
+    gridContainer.innerHTML = '';
+    // regenerate with new number
+    genGrid(gridAmount);
+    
+    // why does this need to be repeated here
+    squares = Array.from(document.getElementsByClassName('square'))
+        squares.forEach(function(square){
+            square.addEventListener('mouseover', function(){
+                square.classList.add('squareAltered')
+            })
+        })
+})
+
+
+// mouseover drawing effect
+let squares = Array.from(document.getElementsByClassName('square'))
 squares.forEach(function(square){
     square.addEventListener('mouseover', function(){
         square.classList.add('squareAltered')
     })
-})
-
-//This is a mess with NodeLists, etc. deleting child nodes
-input.addEventListener('click', function(){
-    const gridAmount = prompt("How many sqaures do you want?")
-    const gridSquare = document.querySelectorAll('.square', '.squareAltered');
-    const row = document.querySelectorAll('row');
-    // //row.removeChild(gridSquare)
-    // const row = document.getElementsByClassName("row");
-    // while (row.firstChild) {
-    //     row.removeChild(row.firstChild);
-    // }
-    row.parentNode.removeChild(row);
-    genGrid(gridAmount);
 })
