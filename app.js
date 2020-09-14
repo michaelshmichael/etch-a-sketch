@@ -1,5 +1,5 @@
 const gridContainer = document.querySelector('#gridContainer');
-const input = document.querySelector('button')
+const input = document.querySelector('button');
 const gridAmount = 18;
 
 // generate random RGB
@@ -7,7 +7,8 @@ function genRandomColor(){
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
-    let color = `rgb(${r}, ${g}, ${b})`;
+    let opacity = 1;
+    let color = `rgb(${r}, ${g}, ${b}, ${opacity})`;
     return color;
 }
 
@@ -27,15 +28,23 @@ function genGrid(gridAmount) {
     }
     // giving coloring functionality
     let squares = Array.from(document.getElementsByClassName('square'))
+    let currentOpacity = 0.5;
     squares.forEach(function(square){
-    square.addEventListener('mouseover', function(){
-        square.style.backgroundColor = `${genRandomColor()}` 
+        
+        square.addEventListener('mouseover', function(e){
+            
+            //square.style.backgroundColor = `${genRandomColor()}`
+            //e.target.style.opacity = `${Number(e.target.style.opacity) + 0.1}`
+            e.target.style.backgroundColor = `rgba(0,0,0,${currentOpacity})`
+            //opacity += 0.1;
+        })
+        
     })
-})
 }
 
 genGrid(gridAmount);
 
+// need to make opacity change with each mouseover
 
 // reset and resize the grid when click button
 input.addEventListener('click', function(){
