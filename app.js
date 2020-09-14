@@ -28,18 +28,21 @@ function genGrid(gridAmount) {
     }
     // giving coloring functionality
     let squares = Array.from(document.getElementsByClassName('square'))
-    let currentOpacity = 0.5;
     squares.forEach(function(square){
-        
-        square.addEventListener('mouseover', function(e){
-            
-            //square.style.backgroundColor = `${genRandomColor()}`
-            //e.target.style.opacity = `${Number(e.target.style.opacity) + 0.1}`
-            e.target.style.backgroundColor = `rgba(0,0,0,${currentOpacity})`
-            //opacity += 0.1;
+    
+        square.addEventListener('mouseover', function drawOpacity(e) {
+                if (e.target.id !== "gridContainer") {
+                    let alphaStart = e.target.style.backgroundColor.slice(-4,-1);
+                    if (alphaStart === 1) {
+                        let alphaEnd = 1;
+                    } else {
+                        alphaEnd = Number(alphaStart) + 0.1;
+                    }
+                    e.target.style.backgroundColor = `rgba(0, 0, 0, ${alphaEnd})`;
+                }
+                //square.style.backgroundColor = `${genRandomColor()}`
+            })      
         })
-        
-    })
 }
 
 genGrid(gridAmount);
